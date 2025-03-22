@@ -1,21 +1,25 @@
 import "./App.css";
 import React, { useState } from "react";
-import { evaluate } from 'mathjs';
+// import { evaluate } from 'mathjs';
 
 function App() {
   const [input, setInput] = useState("");
   const [result, setResult] = useState("");
   const handleButtonClick = (value) => {
-    if (value === "c") {
+    if (value === "C") {
       setInput("");
       setResult("");
     } else if (value === "=") {
-      try {
-        setResult(evaluate(input));
-        // The eval() [evaluate] function in JavaScript is a built-in function that evaluates a string as JavaScript code
-        // (using try-catch is a better option) when using eval() function 
-      } catch (error) {
-        setResult("Error");
+      if(input.trim()===""){
+        setResult("Error")
+      }else{
+        try {
+          setResult(eval(input));
+          // The eval() [evaluate] function in JavaScript is a built-in function that evaluates a string as JavaScript code
+          // (using try-catch is a better option) when using eval() function 
+        } catch (error) {
+          setResult("Error");
+        }
       }
     } else {
       setInput((prev) => prev + value);
@@ -27,7 +31,7 @@ function App() {
       <h1>React Calculator</h1>
       <div className="display">
         <input type="text" value={input} readOnly />
-        <input style={{color:"grey", borderColor:"transparent"}} type="text" value={result} readOnly />
+        {result}
       </div>
       <div className="button-container">
         <button onClick={() => handleButtonClick(7)}>7</button>
