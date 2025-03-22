@@ -1,5 +1,6 @@
 import "./App.css";
 import React, { useState } from "react";
+import { evaluate } from 'mathjs';
 
 function App() {
   const [input, setInput] = useState("");
@@ -10,7 +11,7 @@ function App() {
       setResult("");
     } else if (value === "=") {
       try {
-        setResult(eval(input));
+        setResult(evaluate(input));
         // The eval() [evaluate] function in JavaScript is a built-in function that evaluates a string as JavaScript code
         // (using try-catch is a better option) when using eval() function 
       } catch (error) {
@@ -41,7 +42,7 @@ function App() {
         <button onClick={() => handleButtonClick(2)}>2</button>
         <button onClick={() => handleButtonClick(3)}>3</button>
         <button onClick={() => handleButtonClick("*")}>*</button>
-        <button onClick={() => handleButtonClick("c")}>c</button>
+        <button onClick={() => handleButtonClick("C")}>C</button>
         <button onClick={() => handleButtonClick(0)}>0</button>
         <button onClick={() => handleButtonClick("=")}>=</button>
         <button onClick={() => handleButtonClick("/")}>/</button>
