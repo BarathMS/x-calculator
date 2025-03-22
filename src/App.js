@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState } from "react";
-// import { evaluate } from 'mathjs';
+import { evaluate } from 'mathjs';
 
 function App() {
   const [input, setInput] = useState("");
@@ -14,7 +14,7 @@ function App() {
         setResult("Error")
       }else{
         try {
-          setResult(eval(input));
+          setResult(evaluate(input));
           // The eval() [evaluate] function in JavaScript is a built-in function that evaluates a string as JavaScript code
           // (using try-catch is a better option) when using eval() function 
         } catch (error) {
